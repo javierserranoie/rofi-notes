@@ -10,12 +10,10 @@ then
 	then
 		xfce4-terminal -e "nvim $NOTES_FOLDER/$selected"
 	else
-		old_filename="$(date +%Y-%m-%d-%H-%M-%S)_$selected"
+		old_filename="$(date +%Y-%m-%d-%H-%M-%S)_$selected.md"
 		touch "$NOTES_FOLDER/$old_filename"
 		new_filename=$(detox -v -s lower "$NOTES_FOLDER/$old_filename"|grep ">"|awk 'BEGIN { FS = " -> " } ; { print $2 }')
 
-		#xfce4-terminal -e "nvim $NOTES_FOLDER/$(date +%Y-%m-%d-%H-%M-%S)_$selected"
 		xfce4-terminal -e "nvim $new_filename"
 	fi
 fi
-#detox -s lower $NOTES_FOLDER
